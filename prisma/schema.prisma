@@ -17,5 +17,6 @@ model Fatura {
   energiaCompensadaGdi  Float
   valorTotal            Float
   valorEconomiaGd       Float
+  contribuicaoIlum      Float
   createdAt             DateTime @default(now())
 }

@@ -7,29 +7,58 @@ export class FaturaController {
   constructor(private faturaService: FaturaService) { }
 
   async uploadFatura(req: FastifyRequest, reply: FastifyReply) {
-    const { buffer } = req.body as { buffer: Buffer };
-    const parsedData = await parsePdf(buffer);
+    try {
 
-    const validationResult = FaturaSchema.safeParse(parsedData);
-    if (!validationResult.success) {
-      reply.status(400).send({ error: validationResult.error.errors });
-      return;
+      const { buffer } = req.body as { buffer: Buffer };
+
+      const parsedData = await parsePdf(buffer);
+
+
+      const validationResult = FaturaSchema.safeParse(parsedData);
+      if (!validationResult.success) {
+        return reply.status(400).send({
+          error: 'Erro de validação',
+          detalhes: validationResult.error.errors
+        });
+      }
+
+
+      const fatura = validationResult.data;
+      const createdFatura = await this.faturaService.createFatura(fatura);
+      return reply.status(201).send(createdFatura);
+    } catch (error) {
+      console.error('Erro ao processar a fatura:', error);
+      return reply.status(500).send({ error: 'Erro ao processar a fatura' });
     }
-
-    const fatura = validationResult.data;
-    const createdFatura = await this.faturaService.createFatura(fatura);
-    reply.send(createdFatura);
   }
 
   async getFaturasByCliente(req: FastifyRequest, reply: FastifyReply) {
-    const { numCliente } = req.params as { numCliente: string };
-    const faturas = await this.faturaService.getFaturaByCliente(numCliente);
-    reply.send(faturas);
+    try {
+      const { numCliente } = req.params as { numCliente: string };
+
+      const faturas = await this.faturaService.getFaturaByCliente(numCliente);
+      if (!faturas || faturas.length === 0) {
+        return reply.status(404).send({ error: 'Nenhuma fatura encontrada para este cliente' });
+      }
+      return reply.status(200).send(faturas);
+    } catch (error) {
+      console.error('Erro ao buscar faturas por cliente:', error);
+      return reply.status(500).send({ error: 'Erro ao buscar faturas' });
+    }
   }
 
   async getFaturasByMes(req: FastifyRequest, reply: FastifyReply) {
-    const { mesReferencia } = req.params as { mesReferencia: string };
-    const faturas = await this.faturaService.getFaturaByMes(mesReferencia);
-    reply.send(faturas);
+    try {
+      const { mesReferencia } = req.params as { mesReferencia: string };
+
+      const faturas = await this.faturaService.getFaturaByMes(mesReferencia);
+      if (!faturas || faturas.length === 0) {
+        return reply.status(404).send({ error: 'Nenhuma fatura encontrada para este mês' });
+      }
+      return reply.status(200).send(faturas);
+    } catch (error) {
+      console.error('Erro ao buscar faturas por mês:', error);
+      return reply.status(500).send({ error: 'Erro ao buscar faturas' });
+    }
   }
 }

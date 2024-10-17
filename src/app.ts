@@ -6,37 +6,16 @@ import { FaturaService } from './application/use-cases/FaturaService';
 import { FaturaController } from './infra/controllers/FaturaController';
 import swagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
+import { swaggerOptions, swaggerUiOptions } from './infra/config/swaggerConfig';
 
 const fastify = Fastify({ logger: true });
 const faturaRepository = new PrismaFaturaRepository();
 const faturaService = new FaturaService(faturaRepository);
 const faturaController = new FaturaController(faturaService);
 
-// Registre o Swagger
-fastify.register(swagger, {
-  mode: 'dynamic',
-  openapi: {
-    info: {
-      title: 'API de Faturas',
-      description: 'Documentação da API para o gerenciamento de faturas de energia elétrica',
-      version: '1.0.0',
-    },
-  }
-});
 
-// Registre o Swagger UI
-fastify.register(fastifySwaggerUi, {
-  routePrefix: '/docs',
-  uiConfig: {
-    docExpansion: 'full',
-    deepLinking: false,
-  },
-  staticCSP: true,
-  transformSpecification: (swaggerObject: Record<string, any>, req: FastifyRequest, reply: FastifyReply): Record<string, any> => {
-    return swaggerObject;
-  },
-  transformSpecificationClone: true,
-});
+fastify.register(swagger, swaggerOptions);
+fastify.register(fastifySwaggerUi, swaggerUiOptions);
 
 // Rota para upload de faturas
 fastify.post('/faturas/upload', {
