@@ -1,0 +1,28 @@
+{
+  "name": "faturas-backend",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "ts-node src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@fastify/swagger": "^9.2.0",
+    "@fastify/swagger-ui": "^5.1.0",
+    "@prisma/client": "^3.0.0",
+    "fastify": "^5.0.0",
+    "fastify-swagger": "^5.1.1",
+    "pdf-parse": "^1.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/pdf-parse": "^1.1.4",
+    "jest": "^27.0.0",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^5.6.3"
+  }
+}
