@@ -1,4 +1,6 @@
-import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
+import Fastify from 'fastify';
+import {FastifyReply, FastifyRequest } from 'fastify';
+
 import { PrismaFaturaRepository } from './infra/database/PrismaFaturaRepository';
 import { FaturaService } from './application/use-cases/FaturaService';
 import { FaturaController } from './infra/controllers/FaturaController';
@@ -19,8 +21,7 @@ fastify.register(swagger, {
       description: 'Documentação da API para o gerenciamento de faturas de energia elétrica',
       version: '1.0.0',
     },
-  },
-  exposeRoute: true, // Adicionar para expor a documentação das rotas
+  }
 });
 
 // Registre o Swagger UI
@@ -65,7 +66,7 @@ fastify.post('/faturas/upload', {
 fastify.get('/faturas/cliente/:numCliente', {
   schema: {
     description: 'Obtém as faturas de um cliente específico',
-    tags: ['Fatura'], // Adicione a tag aqui para exibir corretamente
+    tags: ['Fatura'],
     params: {
       type: 'object',
       properties: {
@@ -98,7 +99,7 @@ fastify.get('/faturas/cliente/:numCliente', {
 fastify.get('/faturas/mes/:mesReferencia', {
   schema: {
     description: 'Obtém as faturas de um mês específico',
-    tags: ['Fatura'], // Adicione a tag aqui para exibir corretamente
+    tags: ['Fatura'],
     params: {
       type: 'object',
       properties: {

@@ -8,7 +8,7 @@ export class FaturaController {
 
   async uploadFatura(req: FastifyRequest, reply: FastifyReply) {
     const { buffer } = req.body as { buffer: Buffer };
-    const parsedData = await parsePdf(buffer);  
+    const parsedData = await parsePdf(buffer);
 
     const validationResult = FaturaSchema.safeParse(parsedData);
     if (!validationResult.success) {
