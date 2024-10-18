@@ -9,8 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@fastify/swagger": "^9.2.0",
-    "@fastify/swagger-ui": "^5.1.0",
+    "@fastify/multipart": "^9.0.1",
     "@prisma/client": "^5.21.0",
     "fastify": "^5.0.0",
     "pdf-parse": "^1.1.0",

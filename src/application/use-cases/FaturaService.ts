@@ -1,17 +1,17 @@
 import { FaturaRepository } from "../repositories/FaturaRepository";
 import { Fatura, FaturaSchema } from "../../domain/entities/Fatura";
 import { ZodError } from "zod";
+import { parsePdf } from "../../infra/pdf/parsePdf";
 
 class ValidationError extends Error {
   constructor(public errors: string[]) {
     super("Erro de validação: " + errors.join(", "));
-    this.name = "ValidationError"; // Define o nome do erro para facilitar a identificação
+    this.name = "ValidationError";
   }
 }
 
 export class FaturaService {
   constructor(private faturaRepository: FaturaRepository) { }
-
   /**
    * Cria uma nova fatura após validação dos dados.
    * @param data - Dados da fatura a serem validados e criados.
@@ -20,17 +20,40 @@ export class FaturaService {
    */
   async createFatura(data: unknown): Promise<Fatura> {
     try {
-      // Valida os dados da fatura usando o Zod
-      const validatedData = FaturaSchema.parse(data);
+      
+      const validatedData = FaturaSchema.parse(data); // Valida usando Zod
+      return await this.faturaRepository.createFatura(validatedData); // Salva no repositório
+    } catch (e) {
+      if (e instanceof ZodError) {
+        throw new ValidationError(e.errors.map(err => err.message));
+      }
+      throw e;
+    }
+  }
 
-      // Cria a fatura no repositório
+  /**
+   * Faz o upload do PDF, extrai os dados e cria uma nova fatura após validação.
+   * @param buffer - Buffer do PDF a ser processado.
+   * @returns Promise<Fatura> - Retorna a fatura criada.
+   * @throws ValidationError - Se os dados extraídos não forem válidos.
+   */
+  async uploadFatura(buffer: Buffer): Promise<Fatura> {
+    try {
+
+      const parsedData = await parsePdf(buffer);
+
+      console.log('Dados extraídos do PDF:', parsedData);
+
+
+      const validatedData = FaturaSchema.parse(parsedData);
+
       return await this.faturaRepository.createFatura(validatedData);
     } catch (e) {
       if (e instanceof ZodError) {
-        // Lança um erro de validação se os dados não forem válidos
+        console.error("Erro de validação:", e.errors);
         throw new ValidationError(e.errors.map(err => err.message));
       }
-      // Lança qualquer outro erro que ocorrer
+      console.error("Erro ao processar o PDF:", e);
       throw e;
     }
   }
