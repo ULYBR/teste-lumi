@@ -14,19 +14,33 @@ export class FaturaController {
       if (!data) {
         return reply.status(400).send({ error: 'Nenhum arquivo foi enviado na requisição' });
       }
-      // Logando informações do arquivo
-      console.log('Tipo de arquivo:', data.mimetype);  // Tipo de arquivo
-      console.log('Nome do arquivo:', data.filename);  // Nome do arquivo
-      console.log('Tamanho do arquivo:', data.file.bytesRead);
-      const buffer = await data.toBuffer(); // Converte o stream em buffer
-      const createdFatura = await this.faturaService.uploadFatura(buffer); // Passa o buffer para o service
+
+      const buffer = await data.toBuffer();
+      const createdFatura = await this.faturaService.uploadFaturas([buffer]);
       return reply.status(201).send(createdFatura);
     } catch (error) {
       console.error('Erro ao processar a fatura:', error);
       return reply.status(500).send({ error: 'Erro ao processar a fatura' });
     }
   }
+  // Controller para upload de múltiplos arquivos de faturas (se necessário)
+  async uploadFaturas(req: FastifyRequest, reply: FastifyReply) {
+    try {
+      const files = await req.files();
+      const faturasCriadas = [];
 
+      for await (const file of files) {
+        const buffer = await file.toBuffer();
+        const createdFatura = await this.faturaService.uploadFaturas([buffer]);
+        faturasCriadas.push(createdFatura);
+      }
+
+      return reply.status(201).send(faturasCriadas);
+    } catch (error) {
+      console.error('Erro ao processar os arquivos de fatura:', error);
+      return reply.status(500).send({ error: 'Erro ao processar os arquivos de fatura' });
+    }
+  }
   // Controller para obter faturas por cliente
   async getFaturasByCliente(req: FastifyRequest, reply: FastifyReply) {
     try {
@@ -35,7 +49,7 @@ export class FaturaController {
         return reply.status(400).send({ error: 'Número do cliente não informado' });
       }
 
-      const faturas = await this.faturaService.getFaturaByCliente(numCliente);
+      const faturas = await this.faturaService.getFaturasByCliente(numCliente);
       if (!faturas || faturas.length === 0) {
         return reply.status(404).send({ error: 'Nenhuma fatura encontrada para este cliente' });
       }
@@ -50,12 +64,13 @@ export class FaturaController {
   // Controller para obter faturas por mês
   async getFaturasByMes(req: FastifyRequest, reply: FastifyReply) {
     try {
-      const { mesReferencia } = req.params as { mesReferencia: string };
+      const { mesReferencia } = req.query as { mesReferencia: string };
+
       if (!mesReferencia) {
         return reply.status(400).send({ error: 'Mês de referência não informado' });
       }
 
-      const faturas = await this.faturaService.getFaturaByMes(mesReferencia);
+      const faturas = await this.faturaService.getFaturasByMes(mesReferencia);
       if (!faturas || faturas.length === 0) {
         return reply.status(404).send({ error: 'Nenhuma fatura encontrada para este mês' });
       }

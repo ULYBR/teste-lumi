@@ -11,9 +11,12 @@ datasource db {
 model Fatura {
   id                    Int      @id @default(autoincrement())
   numCliente            String
+  numInstalacao         String
   mesReferencia         String
   energiaEletricaKwh    Float
+  energiaEletricaValor  Float
   energiaSceeeKwh       Float
+  energiaSceeeValor     Float
   energiaCompensadaGdi  Float
   valorTotal            Float
   valorEconomiaGd       Float

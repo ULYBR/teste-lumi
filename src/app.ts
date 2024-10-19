@@ -15,7 +15,7 @@ async function buildServer() {
     const faturaController = new FaturaController(faturaService);
 
     fastify.get('/faturas/cliente/:numCliente', faturaController.getFaturasByCliente.bind(faturaController));
-    fastify.post('/faturas/upload', faturaController.uploadFatura.bind(faturaController));
+    fastify.post('/faturas/upload', faturaController.uploadFaturas.bind(faturaController));
     fastify.get('/faturas/mes/:mesReferencia', faturaController.getFaturasByMes.bind(faturaController));
 
 

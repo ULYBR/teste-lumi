@@ -20,7 +20,7 @@ export class FaturaService {
    */
   async createFatura(data: unknown): Promise<Fatura> {
     try {
-      
+
       const validatedData = FaturaSchema.parse(data); // Valida usando Zod
       return await this.faturaRepository.createFatura(validatedData); // Salva no repositório
     } catch (e) {
@@ -37,25 +37,37 @@ export class FaturaService {
    * @returns Promise<Fatura> - Retorna a fatura criada.
    * @throws ValidationError - Se os dados extraídos não forem válidos.
    */
-  async uploadFatura(buffer: Buffer): Promise<Fatura> {
-    try {
+  async uploadFaturas(files: Buffer[]): Promise<Fatura[]> {
+    const faturasCriadas: Fatura[] = [];  // Lista para armazenar as faturas criadas.
 
-      const parsedData = await parsePdf(buffer);
+    // Itera sobre cada arquivo (file) da lista de arquivos.
+    for (const file of files) {
+      try {
 
-      console.log('Dados extraídos do PDF:', parsedData);
+        const parsedData = await parsePdf(file);
 
 
-      const validatedData = FaturaSchema.parse(parsedData);
 
-      return await this.faturaRepository.createFatura(validatedData);
-    } catch (e) {
-      if (e instanceof ZodError) {
-        console.error("Erro de validação:", e.errors);
-        throw new ValidationError(e.errors.map(err => err.message));
+        const validatedData = FaturaSchema.parse(parsedData);
+
+
+        const novaFatura = await this.faturaRepository.createFatura(validatedData);
+
+
+        faturasCriadas.push(novaFatura);
+
+      } catch (e) {
+
+        if (e instanceof ValidationError) {
+          console.error("Erro de validação ao processar o arquivo:", e.errors);
+        } else {
+          console.error("Erro ao processar o arquivo PDF:", e);
+        }
       }
-      console.error("Erro ao processar o PDF:", e);
-      throw e;
     }
+
+    // Retorna a lista de faturas criadas (não existentes previamente no banco).
+    return faturasCriadas;
   }
 
   /**
@@ -63,8 +75,20 @@ export class FaturaService {
    * @param numCliente - Número do cliente para buscar as faturas.
    * @returns Promise<Fatura[]> - Retorna uma lista de faturas do cliente.
    */
-  async getFaturaByCliente(numCliente: string): Promise<Fatura[]> {
-    return await this.faturaRepository.getFaturaByCliente(numCliente);
+  async getFaturasByCliente(numCliente: string): Promise<Fatura[]> {
+    try {
+      const faturas = await this.faturaRepository.getFaturaByCliente(numCliente);
+
+      if (!faturas || faturas.length === 0) {
+        console.warn(`Nenhuma fatura encontrada para o cliente ${numCliente}`);
+        return [];  // Retorna uma lista vazia se não encontrar faturas.
+      }
+
+      return faturas;
+    } catch (error) {
+      console.error(`Erro ao buscar faturas para o cliente ${numCliente}:`, error);
+      throw error;
+    }
   }
 
   /**
@@ -72,7 +96,7 @@ export class FaturaService {
    * @param mesReferencia - Mês de referência para buscar as faturas.
    * @returns Promise<Fatura[]> - Retorna uma lista de faturas do mês.
    */
-  async getFaturaByMes(mesReferencia: string): Promise<Fatura[]> {
+  async getFaturasByMes(mesReferencia: string): Promise<Fatura[]> {
     return await this.faturaRepository.getFaturaByMes(mesReferencia);
   }
 }

@@ -4,7 +4,7 @@ import { FaturaRepository } from '../../application/repositories/FaturaRepositor
 
 export class PrismaFaturaRepository implements FaturaRepository {
   async createFatura(fatura: Fatura): Promise<Fatura> {
-    // Verifica se os campos obrigatórios estão presentes
+
     if (!fatura.numCliente || !fatura.mesReferencia || !fatura.energiaEletricaKwh || !fatura.valorTotal || fatura.contribuicaoIlum === undefined) {
       throw new Error('Os campos obrigatórios não estão presentes.');
     }
@@ -12,26 +12,54 @@ export class PrismaFaturaRepository implements FaturaRepository {
     return await prisma.fatura.create({
       data: {
         numCliente: fatura.numCliente,
+        numInstalacao: fatura.numInstalacao,
         mesReferencia: fatura.mesReferencia,
         energiaEletricaKwh: fatura.energiaEletricaKwh,
-        energiaSceeeKwh: fatura.energiaSceeeKwh || 0, // Valor padrão se não fornecido
-        energiaCompensadaGdi: fatura.energiaCompensadaGdi || 0, // Valor padrão se não fornecido
+        energiaEletricaValor: fatura.energiaEletricaValor,
+        energiaSceeeKwh: fatura.energiaSceeeKwh || 0,
+        energiaSceeeValor: fatura.energiaSceeeValor,
+        energiaCompensadaGdi: fatura.energiaCompensadaGdi || 0,
         valorTotal: fatura.valorTotal,
-        valorEconomiaGd: fatura.valorEconomiaGd || 0, // Valor padrão se não fornecido
-        contribuicaoIlum: fatura.contribuicaoIlum || 0, // Valor padrão se não fornecido
+        valorEconomiaGd: fatura.valorEconomiaGd || 0,
+        contribuicaoIlum: fatura.contribuicaoIlum || 0,
+      },
+    });
+  }
+
+  async updateFatura(id: number, data: Fatura): Promise<Fatura | null> {
+    return await prisma.fatura.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async findFaturaByClienteAndMes(numCliente: string, mesReferencia: string): Promise<Fatura | null> {
+    return await prisma.fatura.findFirst({
+      where: {
+        numInstalacao: numCliente,
+        mesReferencia: mesReferencia,
       },
     });
   }
 
   async getFaturaByCliente(numCliente: string): Promise<Fatura[]> {
-    return await prisma.fatura.findMany({
-      where: { numCliente },
+
+
+    const faturas = await prisma.fatura.findMany({
+      where: { numCliente }
+
     });
+
+    return faturas;
   }
 
   async getFaturaByMes(mesReferencia: string): Promise<Fatura[]> {
-    return await prisma.fatura.findMany({
-      where: { mesReferencia },
+
+
+    const faturas = await prisma.fatura.findMany({
+      where: { mesReferencia }
     });
+
+    return faturas;
   }
 }
