@@ -19,7 +19,15 @@ async function buildServer() {
     fastify.get('/faturas/mes/:mesReferencia', faturaController.getFaturasByMes.bind(faturaController));
 
     const port = Number(process.env.PORT) || 3000;
-    fastify.listen({ port });
+    const host = '0.0.0.0';
+
+    fastify.listen({ port, host }, (err, address) => {
+      if (err) {
+        fastify.log.error(err);
+        process.exit(1);
+      }
+      fastify.log.info(`Server listening at ${address}`);
+    });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
