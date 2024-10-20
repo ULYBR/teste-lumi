@@ -20,7 +20,6 @@ async function buildServer() {
 
     const port = Number(process.env.PORT) || 3000;
     fastify.listen({ port });
-    fastify.log.info(`Server running at http://localhost:3000`);
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
