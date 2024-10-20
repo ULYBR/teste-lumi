@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "794cf70d-103a-4f5d-baad-5ab5008715c0",
+		"name": "Lumi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34750677"
+	},
+	"item": [
+		{
+			"name": "Buscar Por Número Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/faturas/cliente/7202210726",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"faturas",
+						"cliente",
+						"7202210726"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucesso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/faturas/cliente/7202210726",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"faturas",
+								"cliente",
+								"7202210726"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 18 Oct 2024 21:45:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache,no-store"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": ".Tunnels.Relay.WebForwarding.Cookies=CfDJ8E0FHi1JCVNKrny-ARCYWxOtEwK01H4jfg3kwqoOZKCBf561wlhcENtPN4g5RLWJea8fEGFBYDLaXqEADMt3qvSgrYKO3Lk7n0wkzQpvkhti5tIYoeHjSsF_EObJmR3AJrcrtAyVn5ul8zqMSM9eamdaLqqlcG0C4F8xH6faHQa8_916RcX8vEkBxfzMPdwXZhCcKGC32wp-b4ULRaq0wr3p2Ntxm4MHMBPVOT_b3FtC3KRHxuftiPNPQspoJ76jnj6_hhmVIDtXXSYT8u97gEtQp1DNpcIv5SbrovfZRL5-U6UcU6tKljkvhAiPCFPoDK_STJgbb0YV35uFIzkO0HcgyhhGb2SyTqkM23-xh-WYX2LMvd-gkPPGoZMA9z9Cl1US2WYTmDJ4yXzmTkDPLiSegvC3O1lpBjOoMKLd1JIbFk3Gk4ZBpN0-lFSrHuRJxFN33Ow65N2SwNxa1VgJm4omxif-ekMXdjLg0-fqiz1FDLbgG5Pfh5T384R8x9JZSEhFgIzS1rua6q-LAY-XvhLBeBH0XrGaDTeiN1FycqwJfy5BOVWBe1tARK35fEcTyQRmdBXSCO_pbRDtyI0hE08Oyi4I3S4m3xU1Ijk7gTco6BwqM-sZ8CeaXuucBPTH3gKeYQ_bCH7grttRmcd38H0lujZUhgqEQWuw7pGPMAYGi7KqUDNEDHUQW3ckfoVqC8evN72EalKUavCjQ-v-i0bUu6I2hSn16Sc5UANLBb7FqZQox-CFAXCHfJZaYR5EZEvS8lOeWBaBNEi_ORTra-uym9GTDwvvQ-py7a1E-BhAWSmVAkUkNmY5QsXfY8RPaGMJwXHCHrVWW8rW-iP-8XmJ4cb2QXd1ue6LqoRWx_G0tsQQIwyKQDYxmzBQU6dM1j8DBPIhbuMX_VuSitWgrb_NakQ4TsZX4V-cMWjvr0zimP9cI_IvS1uXTBpihxv_R73OKhUqIhb5Kf0N3xMLzbRhwI7kksdcFfWh0944en9a; path=/; secure; samesite=none"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:34s"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:40s"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "x-ms-ratelimit-limit",
+							"value": "1500"
+						},
+						{
+							"key": "x-ms-ratelimit-remaining",
+							"value": "1496"
+						},
+						{
+							"key": "x-ms-ratelimit-used",
+							"value": "4"
+						},
+						{
+							"key": "x-ms-ratelimit-reset",
+							"value": "0"
+						},
+						{
+							"key": "vssaas-request-id",
+							"value": "93b5ab66-e841-4596-b2f0-d9834dfd49a0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "x-served-by",
+							"value": "tunnels-prod-rel-brs-v3-cluster"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex, nofollow"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4,\n        \"numCliente\": \"7202210726\",\n        \"numInstalacao\": \"3001422762\",\n        \"mesReferencia\": \"JAN/2024\",\n        \"energiaEletricaKwh\": 100,\n        \"energiaEletricaValor\": 95.52,\n        \"energiaSceeeKwh\": 2300,\n        \"energiaSceeeValor\": 1.172,\n        \"energiaCompensadaGdi\": 2300,\n        \"valorTotal\": 66.62,\n        \"valorEconomiaGd\": -1120.85,\n        \"contribuicaoIlum\": 40.45,\n        \"createdAt\": \"2024-10-18T21:44:10.408Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Buscar Por Mês",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/faturas/mes/?mesReferencia=JAN/2024",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"faturas",
+						"mes",
+						""
+					],
+					"query": [
+						{
+							"key": "mesReferencia",
+							"value": "JAN/2024"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucesso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/faturas/mes/?mesReferencia=JAN/2024",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"faturas",
+								"mes",
+								""
+							],
+							"query": [
+								{
+									"key": "mesReferencia",
+									"value": "JAN/2024"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 18 Oct 2024 21:48:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache,no-store"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": ".Tunnels.Relay.WebForwarding.Cookies=CfDJ8E0FHi1JCVNKrny-ARCYWxMpIaFjNrzdyJ8KiW_gWSfIWOXW1zkeMCopzIYlnOGun-JGRSKDFeUeU67RUsWHHNgtfE5uUpNBCJfRZpS6IRIxZr-TDgp7BzLTtnNkxT-ilhNQLlWniZW_SqUOzZN-G-kjfJ_1U_3AOwaXi1HQJ0c9Oz6r_E2mTCUSPu45FX77Au0VOLHOM0l6O6fI3wHoYt383rxPVQzsD-RRws7VFe3BnkIrDb_Ue0PhZDZQ9aXzGY1aZbUSccJMR9THxSpE2DiyqQ7dJSSP25xG4Ypljl3BwpqGnmlF2wc2BDeVa5yMdrqFbE8t6NDLqooDhqEuK9xBCGQCf77faF63tjRbXPx9zcQMH5NYg48f-FTCwfke6pW025OF8Ta2VSadbu7zETPTjiz0bo1R9ziCx5xYb_cd5PJH0HxYTquWlaLAhGu65itpsHXqj7WE3kZD-uNG7aFAlDJxoQJwnp9cOE7AA-ZDLp6azNcih1GoFOeZnXDSLVaAv9OGjNIKl33gStLkMk0NPcr-9lL67gMO2_tSz_cqzj_H5WJ2Yfz9kKzHlJrLv-FSRp91hSjPnTVPqxw71DiQ1mg5Oi-YrPv1y-FemN-yzu3HpOxEpwJl-DQZsQ3LNjuXmb7JzrtBladwRfg8P5Wi0GbdV9xxb12vYp-aJ8y9ci79v4h-XrPiu9oQ6_KrpAHDFe6mnJ8KblXrz5l2RpdSM_Nny7n8Z0F_X3TVAAR8aXKwRm4AVsP_T80olCxLLjGk9YKlUsWEPBqOelaL1JokJFinyC7s3YETUJjkJ-111FGExeD1DIl5BxNjgA-nX_KZIjg99gqEJyJPSBq53HBs40DbLvJM4-RV6Ymz9a_A2Pm72U3QdUOYhaSUS5d65XEyAkdNBLrndKY1HXSuAv23IcVnImIysbV8D0EjzW_qv1bPryfLf_rrWyAkAy6v-ebjJmqSQDPlJWIsF0CBDN0BJPZ_Aa_wEUVt5gxLHLVi; path=/; secure; samesite=none"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:39s"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:24s"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "x-ms-ratelimit-limit",
+							"value": ""
+						},
+						{
+							"key": "x-ms-ratelimit-remaining",
+							"value": ""
+						},
+						{
+							"key": "x-ms-ratelimit-used",
+							"value": "1"
+						},
+						{
+							"key": "x-ms-ratelimit-reset",
+							"value": ""
+						},
+						{
+							"key": "vssaas-request-id",
+							"value": "d2cc295b-8359-4422-9c57-84a495254b4b"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "x-served-by",
+							"value": "tunnels-prod-rel-brs-v3-cluster"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex, nofollow"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4,\n        \"numCliente\": \"7202210726\",\n        \"numInstalacao\": \"3001422762\",\n        \"mesReferencia\": \"JAN/2024\",\n        \"energiaEletricaKwh\": 100,\n        \"energiaEletricaValor\": 95.52,\n        \"energiaSceeeKwh\": 2300,\n        \"energiaSceeeValor\": 1.172,\n        \"energiaCompensadaGdi\": 2300,\n        \"valorTotal\": 66.62,\n        \"valorEconomiaGd\": -1120.85,\n        \"contribuicaoIlum\": 40.45,\n        \"createdAt\": \"2024-10-18T21:44:10.408Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Inserção Pdf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "buffer",
+							"type": "file",
+							"src": "/C:/Users/Administrador/Downloads/Faturas-20241016T180111Z-001/Faturas/Instalação_ 3001422762/3001422762-01-2024.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/faturas/upload",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"faturas",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "buffer",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "buffer",
+									"type": "file",
+									"src": "/C:/Users/Administrador/Downloads/Faturas-20241016T180111Z-001/Faturas/Instalação_ 3001422762/3001422762-01-2024.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/faturas/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"faturas",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "buffer",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 18 Oct 2024 21:44:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "335"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache,no-store"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": ".Tunnels.Relay.WebForwarding.Cookies=CfDJ8E0FHi1JCVNKrny-ARCYWxPBcIwI-leW09eFEOt_GjiTLoLGgTOlW8M597tw-XsoM7ejOec7PO2VaFNZc8Gj_gTqmeYWMOOvWzk-AC4SSL0dSoacaTAMoe0oBSfnOG6YsJDYgKXCxsMBbtXZjFQOH7nkQxqUG06kiw_1mDIU2ufPPlTq0EI14aQpSuEbS0SlPnPWIsoX-F9GSzuk8U1pS-Y1V3vXpEZlbkeKY9TUSK8BM_ZiXch_TV1d_OCvTxJrmU4YxRgJaVeJHvp5I1-kkI9GH3Ub5oQGCafhFv_yPStpXvm1ZEnL1W-UpArIWYzXqP-CfQgar8_TWdDvAgGl3pzXze8RMsSDQaVR1c66CkvLkABNRFwvvwtPrD5nmh8MThRZrsBF7yL1pKv7NqcTGPUPg7M42_8qiB4IhhI0nzjdZ3t0YTKGwHy2mT8-7sj0FJgHIv52yQG3QDg6fauNm2ZURua4v35O2d7a5LUyIrERTO2FIhUYLfaSDmsb3rTv-DS97SI73QG6mmN6C222gjmaJYysb7aNz1rC9LbnGrAmq1fxqWAdOzPNvPImsxb7htjJb0Hu1MUPpAmBVcXTy9deF02Z4mOKosDNy7IX9HBLaV8SjZ6I_fYOrNGXjaSLbUBf6H8fhCfkHxoH32T4RkBmft5Ts5zLgKnzC5vyxfmq0OQUSl7SeZq_pSoSbDlg3m97X4I1aMWU6rLApI6upGwiUhhsC4MVhwpkCC42E4U7O1aYoYmxneo7AqUnfVM1Yp7KvQArzRgEDknl2lXTVhnwoZJMPSCv-XfaTIccm-m2EJUOCJllz3rTasvuHfo71bgOs6uL8goyQVU2_S9o74rlDvvTV0U-PxLgYnZe6GwZ7rqj07D7cWdpOLnwwpF83M67yKfHz1vnY5kpp0WADWiWyoeydG1FjNk4bvMGmV9JyqkGifvZNXgPEl0B-qKYTyeEn-SIxktOb6o-a43ZHEM-cl_cluWQjxjyRc87Ojm1; path=/; secure; samesite=none"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Limit",
+							"value": "HttpRequestRatePerPort:1500/m"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Remaining",
+							"value": "HttpRequestRatePerPort:1499"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:58s"
+						},
+						{
+							"key": "RateLimit-Reset",
+							"value": "HttpRequestRatePerPort:46s"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "X-Report-Abuse",
+							"value": "https://msrc.microsoft.com/report/abuse"
+						},
+						{
+							"key": "x-ms-ratelimit-limit",
+							"value": ""
+						},
+						{
+							"key": "x-ms-ratelimit-remaining",
+							"value": ""
+						},
+						{
+							"key": "x-ms-ratelimit-used",
+							"value": "1"
+						},
+						{
+							"key": "x-ms-ratelimit-reset",
+							"value": ""
+						},
+						{
+							"key": "vssaas-request-id",
+							"value": "29ffbe82-507a-4011-b478-3ec856a376b3"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "x-served-by",
+							"value": "tunnels-prod-rel-brs-v3-cluster"
+						},
+						{
+							"key": "X-Robots-Tag",
+							"value": "noindex, nofollow"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    [\n        {\n            \"id\": 4,\n            \"numCliente\": \"7202210726\",\n            \"numInstalacao\": \"3001422762\",\n            \"mesReferencia\": \"JAN/2024\",\n            \"energiaEletricaKwh\": 100,\n            \"energiaEletricaValor\": 95.52,\n            \"energiaSceeeKwh\": 2300,\n            \"energiaSceeeValor\": 1.172,\n            \"energiaCompensadaGdi\": 2300,\n            \"valorTotal\": 66.62,\n            \"valorEconomiaGd\": -1120.85,\n            \"contribuicaoIlum\": 40.45,\n            \"createdAt\": \"2024-10-18T21:44:10.408Z\"\n        }\n    ]\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://teste-lumi.onrender.com",
+			"type": "string"
+		}
+	]
+}
