@@ -49,11 +49,25 @@ Este projeto é uma API backend para gerenciar faturas utilizando **Fastify**, *
    npm run dev
    ```
 
+
+---
+
+### **Rodar Cobertura de Teste**:
+Para rodar os testes unitários e obter a cobertura de teste, utilize o comando:
+
+```bash
+npm run test
+```
+
+---
+
+
 ## Scripts
 
 - **`npm run dev`**: Inicia o servidor localmente no modo de desenvolvimento (usando `ts-node`).
 - **`npm run build`**: Compila o código TypeScript para JavaScript.
 - **`npm run start`**: Inicia o servidor após o build.
+- **`npm run test`** : Teste unitários.
 - **`npx prisma migrate deploy`**: Aplica as migrações no banco de dados.
 
 ## Coleção do Postman
