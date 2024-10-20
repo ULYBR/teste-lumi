@@ -18,8 +18,8 @@ async function buildServer() {
     fastify.post('/faturas/upload', faturaController.uploadFaturas.bind(faturaController));
     fastify.get('/faturas/mes/:mesReferencia', faturaController.getFaturasByMes.bind(faturaController));
 
-
-    await fastify.listen({ port: 3000 });
+    const port = Number(process.env.PORT) || 3000;
+    fastify.listen({ port });
     fastify.log.info(`Server running at http://localhost:3000`);
   } catch (err) {
     fastify.log.error(err);
